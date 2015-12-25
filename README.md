@@ -1,7 +1,7 @@
 ###My solution to The Synacor Challenge (challenge.synacor.com)  
 
-I've implemented the virtual machine, got bored on the "gaming" part of the challenge.
-Part of game input (got to the teleport) is in game_input.txt file.  
+I've implemented the virtual machine, but later got bored on the "gaming" part of the challenge.
+Part of the game input that leads us towards the win is in game_input.txt file.  
 
 THE CHALLENGE  
   
