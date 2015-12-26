@@ -41,19 +41,26 @@ namespace SynacorVirtualMachine
 
         private void DebugStep(IOperation op, ushort[] args)
         {
-            var fullOpCodeName = op.GetType().Name;
-            var shortOpCodeName = fullOpCodeName.Substring(0, fullOpCodeName.Length - "Operation".Length);
+            string shortOpCodeName = GetShortOperationName(op.GetType().Name);
             System.Console.Write($"[DEBUG] { shortOpCodeName, -12 } IP: {IP:x4} Args: ");
-            for (int i = 0; i < args.Length; i++)
+            foreach (var arg in args)
             {
-                System.Console.Write($"{args[i]}");
-                if (ProcessorHelpers.IsRegister(args[i]))
+                if (ProcessorHelpers.IsRegister(arg))
                 {
-                    System.Console.Write($"=>{memory[args[i]]}");
+                    System.Console.Write($"{arg}=>{memory[arg]}");
                 }
-                if(i!=args.Length-1) System.Console.Write(", ");
+                else
+                {
+                    System.Console.Write($"{arg}");
+                }
+                System.Console.Write(", ");
             }
             System.Console.WriteLine();
+        }
+
+        private static string GetShortOperationName(string fullOpCodeName)
+        {
+            return fullOpCodeName.Substring(0, fullOpCodeName.Length - "Operation".Length);
         }
     };
 }
